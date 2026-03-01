@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Jaipuriya Kurti Bazaar – Bapu Bazaar, Jaipur</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+
+<style>
+/* ═══════════════════════════════════════════
+   DESIGN TOKENS
+═══════════════════════════════════════════ */
+:root{
+  --maroon:    #7B1530;
+  --maroon-d:  #520E1F;
+  --maroon-l:  #A0203D;
+  --gold:      #C9922A;
+  --gold-l:    #F0C060;
+  --saffron:   #E8651A;
+  --cream:     #FDF7EF;
+  --warm:      #FFF9F2;
+  --text:      #2A1508;
+  --text-mid:  #5C3320;
+  --text-muted:#9E7050;
+  --border:    #EAD9C0;
+  --white:     #FFFFFF;
+  --green:     #25D366;
+  --r16:16px; --r12:12px; --r50:50px;
+  --sh-sm:0 2px 14px rgba(123,21,48,.10);
+  --sh-md:0 8px 32px rgba(123,21,48,.16);
+  --sh-lg:0 20px 56px rgba(123,21,48,.22);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Jost',sans-serif;
+  background:var(--cream);
+  color:var(--text);
+  overflow-x:hidden;
+}
+
+/* ═══════════════════════════════════════════
+   SCROLLBAR
+═══════════════════════════════════════════ */
+::-webkit-scrollbar{width:5px;}
+::-webkit-scrollbar-track{background:var(--cream);}
+::-webkit-scrollbar-thumb{background:var(--gold);border-radius:99px;}
+
+/* ═══════════════════════════════════════════
+   ANNOUNCEMENT BAR
+═══════════════════════════════════════════ */
+.announce{
+  background:linear-gradient(90deg,var(--maroon-d),var(--maroon),var(--maroon-d));
+  color:rgba(255,245,225,.9);
+  font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;
+  padding:7px 20px;text-align:center;font-weight:500;
+}
+.announce a{color:var(--gold-l);text-decoration:none;}
+
+/* ═══════════════════════════════════════════
+   HEADER / NAV
+═══════════════════════════════════════════ */
+header{
+  position:sticky;top:0;z-index:200;
+  background:rgba(253,247,239,.96);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+  box-shadow:var(--sh-sm);
+}
+.nav{
+  max-width:1080px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:12px 18px;gap:12px;
+}
+.logo{
+  display:flex;align-items:center;gap:10px;text-decoration:none;
+}
+.logo-icon{
+  width:40px;height:40px;border-radius:10px;
+  background:linear-gradient(135deg,var(--maroon),var(--maroon-d));
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.2rem;box-shadow:0 3px 10px rgba(123,21,48,.3);
+  flex-shrink:0;
+}
+.logo-text{}
+.logo-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.15rem;font-weight:700;
+  color:var(--maroon);line-height:1;
+}
+.logo-sub{
+  font-size:.65rem;color:var(--text-muted);
+  letter-spacing:.08em;text-transform:uppercase;
+  margin-top:2px;
+}
+.nav-right{display:flex;align-items:center;gap:10px;}
+.cart-pill{
+  display:flex;align-items:center;gap:7px;
+  background:var(--maroon);color:#fff;
+  border:none;border-radius:var(--r50);
+  padding:9px 16px;
+  font-family:'Jost',sans-serif;font-size:.82rem;font-weight:600;
+  cursor:pointer;transition:all .2s;
+  box-shadow:0 3px 12px rgba(123,21,48,.35);
+}
+.cart-pill:hover{background:var(--maroon-l);transform:translateY(-1px);}
+.cart-pill .count{
+  background:var(--saffron);color:#fff;
+  border-radius:50px;font-size:.7rem;font-weight:700;
+  padding:1px 7px;min-width:20px;text-align:center;
+  transition:transform .3s cubic-bezier(.34,1.56,.64,1);
+}
+.count.pop{transform:scale(1.5);}
+
+/* ═══════════════════════════════════════════
+   HERO SECTION
+═══════════════════════════════════════════ */
+.hero{
+  position:relative;
+  min-height:90vh;
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
+  background:#1a0508;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background-image:url('https://i.ibb.co/q3PSZrsr/image.jpg');
+  background-size:cover;background-position:center;
+  transform:scale(1.05);
+  transition:transform 8s ease;
+  filter:brightness(.55) saturate(1.2);
+}
+.hero:hover .hero-bg{transform:scale(1);}
+.hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(
+    160deg,
+    rgba(82,14,31,.75) 0%,
+    rgba(123,21,48,.4) 40%,
+    rgba(201,146,42,.25) 100%
+  );
+}
+/* Decorative diagonal strips */
+.hero::after{
+  content:'';position:absolute;bottom:-2px;left:0;right:0;
+  height:80px;
+  background:var(--cream);
+  clip-path:ellipse(60% 100% at 50% 100%);
+}
+.hero-content{
+  position:relative;z-index:2;
+  text-align:center;
+  padding:60px 24px 80px;
+  max-width:740px;margin:0 auto;
+}
+.hero-eyebrow{
+  display:inline-block;
+  background:rgba(201,146,42,.25);
+  border:1px solid rgba(201,146,42,.5);
+  color:var(--gold-l);
+  font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;
+  font-weight:600;padding:6px 18px;border-radius:50px;
+  margin-bottom:20px;
+  backdrop-filter:blur(6px);
+}
+.hero-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2.4rem,8vw,4.5rem);
+  font-weight:700;line-height:1.05;
+  color:#FFF8EE;
+  text-shadow:0 4px 30px rgba(0,0,0,.4);
+  margin-bottom:10px;
+}
+.hero-title em{
+  font-style:italic;
+  color:var(--gold-l);
+}
+.hero-tagline{
+  font-size:clamp(.9rem,2.5vw,1.15rem);
+  color:rgba(255,245,220,.8);
+  font-weight:300;
+  margin-bottom:36px;
+  letter-spacing:.03em;
+}
+.hero-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+.btn-primary{
+  background:linear-gradient(135deg,var(--saffron),var(--gold));
+  color:#fff;border:none;border-radius:var(--r50);
+  padding:15px 36px;
+  font-family:'Jost',sans-serif;font-size:.95rem;font-weight:600;
+  cursor:pointer;text-decoration:none;display:inline-block;
+  box-shadow:0 6px 24px rgba(232,101,26,.45);
+  transition:all .25s ease;letter-spacing:.03em;
+}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 10px 32px rgba(232,101,26,.55);}
+.btn-ghost{
+  background:rgba(255,255,255,.12);
+  color:#FFF5E0;
+  border:1.5px solid rgba(255,255,255,.35);
+  border-radius:var(--r50);
+  padding:14px 30px;
+  font-family:'Jost',sans-serif;font-size:.95rem;font-weight:500;
+  cursor:pointer;text-decoration:none;display:inline-block;
+  backdrop-filter:blur(8px);
+  transition:all .25s ease;
+}
+.btn-ghost:hover{background:rgba(255,255,255,.22);border-color:rgba(255,255,255,.6);}
+/* Stats strip inside hero */
+.hero-stats{
+  display:flex;gap:32px;justify-content:center;
+  margin-top:48px;flex-wrap:wrap;
+}
+.hero-stat{text-align:center;}
+.stat-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.8rem;font-weight:700;
+  color:var(--gold-l);line-height:1;
+}
+.stat-label{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,245,220,.6);margin-top:2px;}
+
+/* ═══════════════════════════════════════════
+   MARQUEE (TRUST STRIP)
+═══════════════════════════════════════════ */
+.marquee-wrap{
+  background:linear-gradient(90deg,var(--gold),var(--saffron),var(--maroon),var(--saffron),var(--gold));
+  background-size:300% 100%;
+  animation:gradShift 6s linear infinite;
+  padding:10px 0;overflow:hidden;
+  position:relative;z-index:1;
+}
+@keyframes gradShift{0%{background-position:0%}100%{background-position:300%}}
+.marquee-track{
+  display:flex;gap:0;
+  animation:marquee 22s linear infinite;
+  width:max-content;
+}
+.marquee-track:hover{animation-play-state:paused;}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.marquee-item{
+  white-space:nowrap;
+  color:#fff;font-size:.8rem;font-weight:600;
+  letter-spacing:.08em;text-transform:uppercase;
+  padding:0 32px;
+}
+.marquee-dot{color:rgba(255,255,255,.5);margin:0 4px;}
+
+/* ═══════════════════════════════════════════
+   MAIN CONTENT
+═══════════════════════════════════════════ */
+main{max-width:1080px;margin:0 auto;padding:0 16px 140px;}
+
+/* ═══════════════════════════════════════════
+   SECTION HEADING
+═══════════════════════════════════════════ */
+.section-head{text-align:center;padding:52px 0 28px;}
+.section-eyebrow{
+  display:inline-block;
+  font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--saffron);font-weight:600;margin-bottom:10px;
+}
+.section-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.8rem,5vw,2.6rem);
+  font-weight:700;color:var(--maroon);line-height:1.1;
+}
+.section-title em{font-style:italic;color:var(--gold);}
+.ornament{
+  display:flex;align-items:center;justify-content:center;gap:12px;
+  margin-top:14px;
+}
+.ornament-line{flex:1;max-width:80px;height:1px;background:linear-gradient(90deg,transparent,var(--gold));}
+.ornament-line.r{background:linear-gradient(90deg,var(--gold),transparent);}
+.ornament-icon{font-size:.9rem;color:var(--gold);}
+
+/* ═══════════════════════════════════════════
+   CATEGORY FILTERS
+═══════════════════════════════════════════ */
+.filters-wrap{
+  display:flex;flex-wrap:wrap;gap:9px;
+  justify-content:center;margin-bottom:36px;
+}
+.filter-btn{
+  background:#fff;
+  border:1.5px solid var(--border);
+  border-radius:var(--r50);
+  padding:9px 20px;
+  font-family:'Jost',sans-serif;font-size:.82rem;font-weight:500;
+  color:var(--text-mid);
+  cursor:pointer;
+  transition:all .2s;
+}
+.filter-btn:hover{border-color:var(--maroon);color:var(--maroon);}
+.filter-btn.active{
+  background:var(--maroon);border-color:var(--maroon);color:#fff;
+  box-shadow:0 4px 14px rgba(123,21,48,.32);
+}
+
+/* ═══════════════════════════════════════════
+   PRODUCT GRID
+═══════════════════════════════════════════ */
+.product-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+  gap:22px;
+}
+
+/* ── CARD ── */
+.card{
+  background:#fff;
+  border-radius:var(--r16);
+  overflow:hidden;
+  border:1px solid var(--border);
+  box-shadow:var(--sh-sm);
+  display:flex;flex-direction:column;
+  transition:transform .28s ease,box-shadow .28s ease;
+  animation:fadeUp .45s ease both;
+}
+.card:hover{transform:translateY(-6px);box-shadow:var(--sh-md);}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── CAROUSEL ── */
+.carousel{position:relative;aspect-ratio:1;overflow:hidden;background:#F5EDE2;cursor:pointer;}
+.carousel-slides{display:flex;height:100%;transition:transform .4s cubic-bezier(.4,0,.2,1);}
+.carousel-slide{min-width:100%;height:100%;overflow:hidden;}
+.carousel-slide img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform .4s ease;
+  display:block;
+}
+.card:hover .carousel-slide img{transform:scale(1.07);}
+.carousel-btn{
+  position:absolute;top:50%;transform:translateY(-50%);
+  background:rgba(255,255,255,.85);
+  border:none;border-radius:50%;
+  width:30px;height:30px;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;font-size:.85rem;
+  box-shadow:0 2px 8px rgba(0,0,0,.15);
+  transition:all .15s;z-index:3;opacity:0;
+  pointer-events:none;
+}
+.carousel:hover .carousel-btn{opacity:1;pointer-events:auto;}
+.carousel-btn:hover{background:#fff;transform:translateY(-50%) scale(1.1);}
+.carousel-btn.prev{left:8px;}
+.carousel-btn.next{right:8px;}
+.carousel-dots{
+  position:absolute;bottom:8px;left:50%;transform:translateX(-50%);
+  display:flex;gap:5px;z-index:3;
+}
+.dot{
+  width:6px;height:6px;border-radius:50%;
+  background:rgba(255,255,255,.6);
+  transition:all .2s;cursor:pointer;
+}
+.dot.active{background:#fff;width:16px;border-radius:3px;}
+.card-badge{
+  position:absolute;top:10px;left:10px;z-index:2;
+  background:var(--maroon);color:#fff;
+  font-size:.62rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  padding:4px 10px;border-radius:50px;
+}
+
+/* ── CARD BODY ── */
+.card-body{padding:15px 15px 18px;flex:1;display:flex;flex-direction:column;}
+.card-cat{
+  font-size:.67rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--saffron);font-weight:600;margin-bottom:4px;
+}
+.card-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.1rem;font-weight:700;color:var(--text);line-height:1.25;
+}
+.card-desc{
+  font-size:.75rem;color:var(--text-muted);font-weight:300;
+  margin-top:3px;line-height:1.4;
+}
+.card-footer{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-top:auto;padding-top:12px;gap:8px;
+}
+.card-price{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.25rem;font-weight:700;color:var(--maroon);
+  line-height:1;
+}
+.add-btn{
+  background:linear-gradient(135deg,var(--saffron),var(--gold));
+  color:#fff;border:none;border-radius:var(--r50);
+  padding:9px 16px;
+  font-family:'Jost',sans-serif;font-size:.78rem;font-weight:600;
+  cursor:pointer;white-space:nowrap;
+  transition:all .2s;flex-shrink:0;
+}
+.add-btn:hover{transform:scale(1.05);box-shadow:0 4px 16px rgba(232,101,26,.45);}
+.add-btn.added{
+  background:linear-gradient(135deg,#2E7D32,#43A047);
+  animation:pop .35s cubic-bezier(.34,1.56,.64,1);
+}
+@keyframes pop{from{transform:scale(.8)}to{transform:scale(1)}}
+
+.no-results{
+  grid-column:1/-1;text-align:center;
+  padding:70px 20px;color:var(--text-muted);font-size:1rem;
+}
+
+/* ═══════════════════════════════════════════
+   FABs
+═══════════════════════════════════════════ */
+.fab-stack{
+  position:fixed;bottom:22px;right:18px;
+  display:flex;flex-direction:column;gap:12px;z-index:300;
+}
+.fab{
+  width:54px;height:54px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.3rem;border:none;cursor:pointer;
+  box-shadow:0 5px 20px rgba(0,0,0,.22);
+  transition:transform .2s,box-shadow .2s;
+  text-decoration:none;
+  position:relative;
+}
+.fab:hover{transform:scale(1.1);box-shadow:0 8px 28px rgba(0,0,0,.3);}
+.fab-wa{background:var(--green);color:#fff;}
+.fab-cart{background:var(--maroon);color:#fff;}
+.fab-cart .badge{
+  position:absolute;top:-4px;right:-4px;
+  background:var(--saffron);color:#fff;
+  border-radius:50%;width:20px;height:20px;
+  font-size:.68rem;font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+  border:2px solid var(--cream);
+}
+
+/* ═══════════════════════════════════════════
+   MODAL SYSTEM
+═══════════════════════════════════════════ */
+.overlay{
+  position:fixed;inset:0;z-index:500;
+  background:rgba(20,5,8,.55);backdrop-filter:blur(5px);
+  display:none;opacity:0;
+  transition:opacity .25s;
+  align-items:flex-end;justify-content:center;
+}
+.overlay.open{display:flex;opacity:1;}
+.sheet{
+  background:var(--warm);border-radius:22px 22px 0 0;
+  width:100%;max-width:660px;max-height:93vh;
+  overflow-y:auto;
+  transform:translateY(50px);
+  transition:transform .32s cubic-bezier(.34,1.15,.64,1);
+}
+.overlay.open .sheet{transform:translateY(0);}
+.sheet-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px 22px 16px;
+  border-bottom:1px solid var(--border);
+  position:sticky;top:0;background:var(--warm);z-index:2;
+  border-radius:22px 22px 0 0;
+}
+.sheet-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.25rem;font-weight:700;color:var(--maroon);
+}
+.sheet-close{
+  width:34px;height:34px;border-radius:50%;
+  background:none;border:none;font-size:1.2rem;
+  cursor:pointer;color:var(--text-muted);
+  display:flex;align-items:center;justify-content:center;
+  transition:background .15s;
+}
+.sheet-close:hover{background:var(--border);}
+
+/* ── CART ── */
+.cart-empty{
+  text-align:center;padding:52px 24px;color:var(--text-muted);
+}
+.cart-empty-ico{font-size:3.5rem;margin-bottom:14px;}
+.cart-list{padding:18px 20px;display:flex;flex-direction:column;gap:14px;}
+.cart-item{
+  display:flex;align-items:center;gap:13px;
+  background:#fff;border-radius:var(--r12);
+  padding:13px;border:1px solid var(--border);
+  box-shadow:var(--sh-sm);
+}
+.ci-img{
+  width:68px;height:68px;border-radius:8px;
+  object-fit:cover;flex-shrink:0;background:#F5EDE2;
+}
+.ci-info{flex:1;min-width:0;}
+.ci-name{font-size:.9rem;font-weight:600;color:var(--text);line-height:1.2;}
+.ci-unit{font-size:.75rem;color:var(--text-muted);}
+.ci-sub{font-size:.82rem;font-weight:700;color:var(--maroon);margin-top:4px;}
+.qty-row{display:flex;align-items:center;gap:9px;margin-top:7px;}
+.qbtn{
+  width:27px;height:27px;border-radius:50%;
+  border:1.5px solid var(--border);background:#fff;
+  font-size:.95rem;font-weight:700;color:var(--text-mid);
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:all .15s;
+}
+.qbtn:hover{background:var(--maroon);border-color:var(--maroon);color:#fff;}
+.qnum{font-size:.88rem;font-weight:600;min-width:22px;text-align:center;}
+.ci-del{
+  background:none;border:none;font-size:1.15rem;cursor:pointer;
+  color:#CCC;padding:5px;flex-shrink:0;transition:color .15s;
+}
+.ci-del:hover{color:var(--maroon);}
+.cart-foot{
+  padding:16px 20px;
+  border-top:1px solid var(--border);
+  position:sticky;bottom:0;background:var(--warm);
+}
+.total-row{
+  display:flex;justify-content:space-between;align-items:baseline;
+  margin-bottom:14px;
+}
+.total-label{font-size:.9rem;color:var(--text-mid);}
+.total-amount{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.55rem;font-weight:700;color:var(--maroon);
+}
+.btn-checkout{
+  width:100%;background:linear-gradient(135deg,var(--maroon),var(--maroon-d));
+  color:#fff;border:none;border-radius:var(--r50);
+  padding:15px;
+  font-family:'Jost',sans-serif;font-size:.98rem;font-weight:600;
+  cursor:pointer;box-shadow:0 6px 22px rgba(123,21,48,.38);
+  transition:all .22s;letter-spacing:.03em;
+}
+.btn-checkout:hover{transform:translateY(-2px);box-shadow:0 9px 30px rgba(123,21,48,.48);}
+.btn-checkout:disabled{opacity:.35;cursor:not-allowed;transform:none;}
+
+/* ── ORDER FORM ── */
+.form-pad{padding:20px 22px 0;}
+.req-note{font-size:.74rem;color:var(--text-muted);margin-bottom:18px;}
+.fgroup{margin-bottom:16px;}
+.fgroup label{
+  display:block;font-size:.76rem;font-weight:600;
+  text-transform:uppercase;letter-spacing:.07em;
+  color:var(--text-mid);margin-bottom:6px;
+}
+.fgroup input,.fgroup textarea{
+  width:100%;border:1.5px solid var(--border);
+  border-radius:var(--r12);padding:12px 14px;
+  font-family:'Jost',sans-serif;font-size:.93rem;color:var(--text);
+  background:#fff;outline:none;
+  transition:border-color .2s,box-shadow .2s;
+}
+.fgroup input:focus,.fgroup textarea:focus{
+  border-color:var(--saffron);
+  box-shadow:0 0 0 3px rgba(232,101,26,.12);
+}
+.fgroup textarea{resize:vertical;min-height:80px;}
+.order-preview{
+  background:linear-gradient(135deg,#FFF8EF,#FFF0DC);
+  border:1px solid var(--border);border-radius:var(--r12);
+  padding:15px;margin-bottom:20px;
+}
+.op-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1rem;font-weight:700;color:var(--maroon);margin-bottom:10px;
+}
+.op-line{
+  display:flex;justify-content:space-between;
+  font-size:.8rem;padding:4px 0;
+  border-bottom:1px dashed var(--border);color:var(--text-mid);
+}
+.op-line:last-of-type{border:none;}
+.op-total{
+  display:flex;justify-content:space-between;
+  font-weight:700;font-size:.92rem;color:var(--maroon);
+  padding-top:8px;margin-top:4px;border-top:1.5px solid var(--border);
+}
+.btn-submit{
+  width:100%;margin-top:4px;margin-bottom:24px;
+  background:linear-gradient(135deg,var(--saffron),var(--gold));
+  color:#fff;border:none;border-radius:var(--r50);
+  padding:15px;
+  font-family:'Jost',sans-serif;font-size:.98rem;font-weight:700;
+  cursor:pointer;letter-spacing:.04em;
+  box-shadow:0 6px 22px rgba(232,101,26,.42);
+  transition:all .22s;
+}
+.btn-submit:hover{transform:translateY(-2px);box-shadow:0 9px 30px rgba(232,101,26,.52);}
+.btn-submit:disabled{opacity:.4;cursor:not-allowed;transform:none;}
+
+/* ── SUCCESS ── */
+.success{
+  display:none;text-align:center;padding:44px 28px;
+}
+.success.show{display:block;}
+.success-ico{font-size:4.5rem;animation:bounceIn .8s ease;margin-bottom:16px;}
+@keyframes bounceIn{
+  0%{transform:scale(0)}60%{transform:scale(1.2)}100%{transform:scale(1)}
+}
+.success-h{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.5rem;font-weight:700;color:var(--maroon);margin-bottom:10px;
+}
+.success-p{font-size:.9rem;color:var(--text-mid);line-height:1.7;margin-bottom:26px;}
+.wa-btn{
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--green);color:#fff;
+  border-radius:var(--r50);padding:14px 32px;
+  text-decoration:none;font-weight:700;font-size:.95rem;
+  box-shadow:0 5px 18px rgba(37,211,102,.4);
+  transition:all .2s;
+}
+.wa-btn:hover{transform:translateY(-2px);box-shadow:0 8px 26px rgba(37,211,102,.5);}
+.done-link{
+  display:block;margin-top:16px;
+  font-size:.85rem;color:var(--text-muted);
+  cursor:pointer;text-decoration:underline;
+  background:none;border:none;font-family:'Jost',sans-serif;
+}
+
+/* ═══════════════════════════════════════════
+   ABOUT STRIP
+═══════════════════════════════════════════ */
+.about-strip{
+  background:linear-gradient(135deg,var(--maroon-d),var(--maroon));
+  border-radius:20px;padding:36px 28px;margin:60px 0 0;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:24px;
+  box-shadow:var(--sh-md);
+}
+.about-left{}
+.about-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.6rem;font-weight:700;color:#FFF5E8;line-height:1.2;
+}
+.about-sub{font-size:.85rem;color:rgba(255,245,225,.65);margin-top:6px;line-height:1.5;}
+.about-right{display:flex;gap:12px;flex-wrap:wrap;}
+.contact-chip{
+  display:flex;align-items:center;gap:8px;
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);
+  border-radius:50px;padding:9px 16px;
+  color:#FFF5E8;font-size:.82rem;font-weight:500;
+  text-decoration:none;backdrop-filter:blur(6px);
+  transition:all .2s;
+}
+.contact-chip:hover{background:rgba(255,255,255,.2);}
+
+/* ═══════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════ */
+footer{
+  background:linear-gradient(160deg,#200810,#120308);
+  color:rgba(255,245,220,.65);
+  text-align:center;padding:32px 20px;
+  font-size:.79rem;line-height:2;
+  margin-top:0;
+}
+footer strong{color:rgba(255,245,220,.9);}
+footer a{color:var(--gold-l);text-decoration:none;}
+.footer-hr{border:none;border-top:1px solid rgba(255,255,255,.08);margin:14px 0;}
+.footer-legal{font-size:.7rem;opacity:.4;}
+
+/* ═══════════════════════════════════════════
+   TOAST
+═══════════════════════════════════════════ */
+.toast{
+  position:fixed;bottom:90px;left:50%;
+  transform:translateX(-50%) translateY(16px);
+  background:#1A0508;color:#FFF5E8;
+  border-radius:50px;padding:10px 24px;
+  font-size:.83rem;font-weight:500;
+  z-index:900;opacity:0;pointer-events:none;
+  transition:all .3s ease;white-space:nowrap;
+  max-width:90vw;text-align:center;
+  box-shadow:0 4px 18px rgba(0,0,0,.25);
+}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════ */
+@media(min-width:600px){
+  .product-grid{grid-template-columns:repeat(auto-fill,minmax(240px,1fr));}
+  .fab-stack{right:26px;bottom:26px;}
+}
+@media(max-width:480px){
+  .hero-stats{gap:20px;}
+  .about-strip{text-align:center;justify-content:center;}
+  .about-right{justify-content:center;}
+}
+</style>
+</head>
+<body>
+
+<!-- ANNOUNCEMENT BAR -->
+<div class="announce">
+  🌸 Jaipur's finest — delivered to your door &nbsp;·&nbsp; Call or WhatsApp: <a href="tel:8249257345">82492 57345</a>
+</div>
+
+<!-- HEADER -->
+<header>
+  <nav class="nav">
+    <a href="#" class="logo">
+      <div class="logo-icon">🪷</div>
+      <div class="logo-text">
+        <div class="logo-name">Jaipuriya Kurti Bazaar</div>
+        <div class="logo-sub">Bapu Bazaar, Jaipur</div>
+      </div>
+    </a>
+    <div class="nav-right">
+      <button class="cart-pill" onclick="openCart()">
+        <span>🛒</span>
+        <span>Cart</span>
+        <span class="count" id="cartCount">0</span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">📍 Bapu Bazaar, Jaipur</div>
+    <h1 class="hero-title">
+      Old City <em>Vibes</em><br/>Delivered to<br/>Your Door
+    </h1>
+    <p class="hero-tagline">Handpicked kurtis, jewellery & gifts — straight from the heart of Jaipur</p>
+    <div class="hero-actions">
+      <a href="#products" class="btn-primary">🛍 Shop Now</a>
+      <a href="https://wa.link/yl33oz" target="_blank" class="btn-ghost">💬 WhatsApp Us</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="stat-num">500+</div>
+        <div class="stat-label">Happy Customers</div>
+      </div>
+      <div class="hero-stat">
+        <div class="stat-num">4★</div>
+        <div class="stat-label">Rated Products</div>
+      </div>
+      <div class="hero-stat">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Authentic</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE STRIP -->
+<div class="marquee-wrap" aria-hidden="true">
+  <div class="marquee-track" id="marqueeTrack">
+    <!-- filled by JS -->
+  </div>
+</div>
+
+<!-- MAIN -->
+<main id="products">
+  <div class="section-head">
+    <div class="section-eyebrow">Handpicked For You</div>
+    <h2 class="section-title">Our <em>Collection</em></h2>
+    <div class="ornament">
+      <div class="ornament-line"></div>
+      <div class="ornament-icon">🌸</div>
+      <div class="ornament-line r"></div>
+    </div>
+  </div>
+
+  <!-- FILTERS -->
+  <div class="filters-wrap" id="filters">
+    <button class="filter-btn active" onclick="filterBy('All',this)">🛍 All</button>
+    <button class="filter-btn" onclick="filterBy('Kurti',this)">👗 Kurti</button>
+    <button class="filter-btn" onclick="filterBy('Bangles',this)">💛 Bangles</button>
+    <button class="filter-btn" onclick="filterBy('Jhumkas',this)">✨ Jhumkas</button>
+    <button class="filter-btn" onclick="filterBy('Necklace',this)">📿 Necklace</button>
+    <button class="filter-btn" onclick="filterBy('Gifts',this)">🎁 Gifts</button>
+  </div>
+
+  <!-- PRODUCT GRID -->
+  <div class="product-grid" id="grid"></div>
+
+  <!-- ABOUT STRIP -->
+  <div class="about-strip">
+    <div class="about-left">
+      <div class="about-title">Come Visit Us in Jaipur!</div>
+      <div class="about-sub">Bapu Bazaar, Jaipur · Open 10 AM – 9 PM, all days<br/>Order online &amp; we'll deliver to your door.</div>
+    </div>
+    <div class="about-right">
+      <a href="tel:8249257345" class="contact-chip">📞 82492 57345</a>
+      <a href="https://wa.link/yl33oz" target="_blank" class="contact-chip">💬 WhatsApp</a>
+      <a href="mailto:roshangnps@gmail.com" class="contact-chip">✉️ Email</a>
+    </div>
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <strong>Jaipuriya Kurti Bazaar</strong><br/>
+  📍 Bapu Bazaar, Jaipur &nbsp;·&nbsp; 📞 <a href="tel:8249257345">82492 57345</a> &nbsp;·&nbsp; ✉️ <a href="mailto:roshangnps@gmail.com">roshangnps@gmail.com</a>
+  <div class="footer-hr"></div>
+  <div class="footer-legal">This website is an order-collection system only. No online payment is processed. The shopkeeper will confirm availability, pricing, and delivery via WhatsApp.</div>
+</footer>
+
+<!-- FLOATING ACTION BUTTONS -->
+<div class="fab-stack">
+  <a href="https://wa.link/yl33oz" target="_blank" class="fab fab-wa" title="Chat on WhatsApp" aria-label="Chat on WhatsApp">💬</a>
+  <button class="fab fab-cart" onclick="openCart()" title="View Cart" aria-label="View Cart">
+    🛒
+    <span class="badge" id="fabBadge">0</span>
+  </button>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<!-- ═══ CART MODAL ═══ -->
+<div class="overlay" id="cartOverlay" onclick="overlayClick(event,'cartOverlay')">
+  <div class="sheet" id="cartSheet">
+    <div class="sheet-header">
+      <span class="sheet-title">🛒 Your Cart</span>
+      <button class="sheet-close" onclick="closeModal('cartOverlay')" aria-label="Close">✕</button>
+    </div>
+    <div id="cartBody"></div>
+  </div>
+</div>
+
+<!-- ═══ ORDER MODAL ═══ -->
+<div class="overlay" id="orderOverlay" onclick="overlayClick(event,'orderOverlay')">
+  <div class="sheet" id="orderSheet">
+    <div class="sheet-header">
+      <span class="sheet-title">📋 Place Your Order</span>
+      <button class="sheet-close" onclick="closeModal('orderOverlay')" aria-label="Close">✕</button>
+    </div>
+
+    <!-- Success -->
+    <div class="success" id="successBox">
+      <div class="success-ico">🎉</div>
+      <h3 class="success-h">Order Placed Successfully!</h3>
+      <p class="success-p">
+        Thank you! <strong>Jaipuriya Kurti Bazaar</strong> will contact you on WhatsApp shortly to confirm your order, check availability, and arrange delivery.
+      </p>
+      <a href="https://wa.link/yl33oz" target="_blank" class="wa-btn">💬 &nbsp;Chat on WhatsApp</a>
+      <button class="done-link" onclick="handleDone()">Close &amp; Continue Shopping</button>
+    </div>
+
+    <!-- Form -->
+    <div id="orderWrap">
+      <div class="form-pad">
+        <div class="order-preview" id="orderPreview"></div>
+        <p class="req-note">* Required fields</p>
+        <form id="orderForm" action="https://formspree.io/f/xqedoqad" method="POST">
+          <input type="hidden" name="_subject"       id="fSubject" value="New Order – Jaipuriya Kurti Bazaar"/>
+          <input type="hidden" name="order_summary"  id="fSummary"/>
+          <input type="hidden" name="grand_total"    id="fTotal"/>
+
+          <div class="fgroup">
+            <label>* Customer Name</label>
+            <input type="text" name="customer_name" placeholder="Your full name" required/>
+          </div>
+          <div class="fgroup">
+            <label>* Phone (WhatsApp preferred)</label>
+            <input type="tel" name="customer_phone" placeholder="10-digit mobile number" required pattern="[0-9]{10}"/>
+          </div>
+          <div class="fgroup">
+            <label>* Delivery Address</label>
+            <textarea name="delivery_address" placeholder="House/flat, street, area, city, PIN code" required></textarea>
+          </div>
+          <div class="fgroup">
+            <label>Special Instructions (optional)</label>
+            <textarea name="special_instructions" placeholder="Colour, size, timing, or any other note…"></textarea>
+          </div>
+          <button type="submit" class="btn-submit" id="submitBtn">✅ &nbsp;Confirm &amp; Send Order</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═════════════════════════════════════════
+     JAVASCRIPT
+════════════════════════════════════════ -->
+<script>
+/* ── DATA ─────────────────────────────────────────────── */
+const PRODUCTS = [
+  {
+    id: 1,
+    name: "Name Wallet",
+    price: 259,
+    category: "Gifts",
+    badge: "Customised",
+    desc: "Customized Name wallet",
+    images: [
+      "https://i.ibb.co/pjt8jSYM/image.jpg",
+      "https://i.ibb.co/pjt8jSYM/image.jpg"   // duplicate until you add more shots
+    ]
+  },
+  {
+    id: 2,
+    name: "Wireless HP Mouse",
+    price: 359,
+    category: "Gifts",
+    badge: "Premium",
+    desc: "Premium wireless mouse",
+    images: [
+      "https://i.ibb.co/WvwS2Q5C/image.jpg",
+      "https://i.ibb.co/WvwS2Q5C/image.jpg"
+    ]
+  },
+  {
+    id: 3,
+    name: "Bellavita Vanilla Perfume",
+    price: 459,
+    category: "Gifts",
+    badge: "Unisex",
+    desc: "Long lasting, refreshing fragrance",
+    images: [
+      "https://i.ibb.co/fVTr67pp/image.jpg",
+      "https://i.ibb.co/fVTr67pp/image.jpg"
+    ]
+  },
+  {
+    id: 4,
+    name: "Fastrack Watch",
+    price: 759,
+    category: "Gifts",
+    badge: "Trending",
+    desc: "Stylish premium wristwatch",
+    images: [
+      "https://i.ibb.co/67SZmVWp/image.jpg",
+      "https://i.ibb.co/67SZmVWp/image.jpg"
+    ]
+  }
+];
+
+const MARQUEE_ITEMS = [
+  "👗 Kurtis","💛 Bangles","✨ Jhumkas","📿 Necklaces","🎁 Gifts",
+  "🚚 Home Delivery","🪷 Jaipur Authentic","💬 WhatsApp Orders","⭐ 500+ Happy Customers"
+];
+
+/* ── MARQUEE ─────────────────────────────────────────── */
+(function initMarquee(){
+  const track = document.getElementById('marqueeTrack');
+  const html = [...MARQUEE_ITEMS,...MARQUEE_ITEMS].map(t=>
+    `<span class="marquee-item">${t}<span class="marquee-dot">❖</span></span>`
+  ).join('');
+  track.innerHTML = html;
+})();
+
+/* ── CART STATE ───────────────────────────────────────── */
+let cart = JSON.parse(localStorage.getItem('jkb_v2_cart') || '[]');
+
+function saveCart(){ localStorage.setItem('jkb_v2_cart', JSON.stringify(cart)); updateBadges(); }
+function cartQty(){ return cart.reduce((s,i)=>s+i.qty,0); }
+function grandTotal(){ return cart.reduce((s,i)=>s+(i.price*i.qty),0); }
+
+function updateBadges(){
+  const q = cartQty();
+  document.getElementById('cartCount').textContent = q;
+  document.getElementById('fabBadge').textContent = q;
+}
+
+function addToCart(id, btn){
+  const p = PRODUCTS.find(x=>x.id===id);
+  const ex = cart.find(x=>x.id===id);
+  if(ex){ ex.qty++; } else { cart.push({id:p.id,name:p.name,price:p.price,img:p.images[0],qty:1}); }
+  saveCart();
+  btn.textContent = '✓ Added';
+  btn.classList.add('added');
+  setTimeout(()=>{btn.textContent='Add to Cart';btn.classList.remove('added');},1300);
+  const cnt = document.getElementById('cartCount');
+  cnt.classList.add('pop');
+  setTimeout(()=>cnt.classList.remove('pop'),400);
+  showToast(`${p.name} added 🛒`);
+}
+
+function removeItem(id){ cart = cart.filter(x=>x.id!==id); saveCart(); renderCart(); }
+function changeQty(id, d){
+  const it = cart.find(x=>x.id===id);
+  if(!it) return;
+  it.qty += d;
+  if(it.qty <= 0){ removeItem(id); return; }
+  saveCart(); renderCart();
+}
+
+/* ── RENDER CART ─────────────────────────────────────── */
+function renderCart(){
+  const body = document.getElementById('cartBody');
+  if(!cart.length){
+    body.innerHTML = `<div class="cart-empty"><div class="cart-empty-ico">🛍️</div><p>Your cart is empty.<br/>Explore our collection!</p></div>`;
+    return;
+  }
+  let rows = cart.map(it=>{
+    const sub = (it.price*it.qty).toLocaleString('en-IN');
+    return `<div class="cart-item">
+      <img src="${it.img}" alt="${it.name}" class="ci-img" loading="lazy"/>
+      <div class="ci-info">
+        <div class="ci-name">${it.name}</div>
+        <div class="ci-unit">₹${it.price.toLocaleString('en-IN')} each</div>
+        <div class="qty-row">
+          <button class="qbtn" onclick="changeQty(${it.id},-1)">−</button>
+          <span class="qnum">${it.qty}</span>
+          <button class="qbtn" onclick="changeQty(${it.id},1)">+</button>
+        </div>
+        <div class="ci-sub">Subtotal: ₹${sub}</div>
+      </div>
+      <button class="ci-del" onclick="removeItem(${it.id})" title="Remove">🗑</button>
+    </div>`;
+  }).join('');
+
+  const gt = grandTotal().toLocaleString('en-IN');
+  const total = cartQty();
+
+  body.innerHTML = `<div class="cart-list">${rows}</div>
+  <div class="cart-foot">
+    <div class="total-row">
+      <span class="total-label">Grand Total (${total} item${total!==1?'s':''})</span>
+      <span class="total-amount">₹${gt}</span>
+    </div>
+    <button class="btn-checkout" onclick="openOrder()">🏷️ &nbsp;Proceed to Order</button>
+  </div>`;
+}
+
+/* ── CAROUSEL ─────────────────────────────────────────── */
+const carouselState = {}; // id → currentIndex
+
+function buildCard(p, delay){
+  const multi = p.images.length > 1;
+  const slides = p.images.map((src,i)=>`
+    <div class="carousel-slide">
+      <img src="${src}" alt="${p.name} – view ${i+1}" loading="lazy"/>
+    </div>`).join('');
+  const dots = p.images.map((_,i)=>`<span class="dot${i===0?' active':''}" onclick="goSlide(${p.id},${i})"></span>`).join('');
+
+  return `<div class="card" style="animation-delay:${delay}ms" id="card-${p.id}">
+    <div class="carousel" id="carousel-${p.id}">
+      <div class="carousel-slides" id="slides-${p.id}">${slides}</div>
+      ${multi?`<button class="carousel-btn prev" onclick="prevSlide(${p.id})">‹</button><button class="carousel-btn next" onclick="nextSlide(${p.id})">›</button>`:''}
+      ${p.badge?`<span class="card-badge">${p.badge}</span>`:''}
+      ${multi?`<div class="carousel-dots" id="dots-${p.id}">${dots}</div>`:''}
+    </div>
+    <div class="card-body">
+      <div class="card-cat">${p.category}</div>
+      <div class="card-name">${p.name}</div>
+      <div class="card-desc">${p.desc}</div>
+      <div class="card-footer">
+        <span class="card-price">₹${p.price.toLocaleString('en-IN')}</span>
+        <button class="add-btn" id="abtn-${p.id}" onclick="addToCart(${p.id}, this)">Add to Cart</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+function setSlide(id, idx){
+  const p = PRODUCTS.find(x=>x.id===id);
+  idx = ((idx % p.images.length) + p.images.length) % p.images.length;
+  carouselState[id] = idx;
+  const track = document.getElementById(`slides-${id}`);
+  if(track) track.style.transform = `translateX(-${idx*100}%)`;
+  const dotsEl = document.getElementById(`dots-${id}`);
+  if(dotsEl){
+    dotsEl.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===idx));
+  }
+}
+function nextSlide(id){ setSlide(id,(carouselState[id]||0)+1); }
+function prevSlide(id){ setSlide(id,(carouselState[id]||0)-1); }
+function goSlide(id,i){ setSlide(id,i); }
+
+/* ── RENDER PRODUCTS ─────────────────────────────────── */
+function renderProducts(filter='All'){
+  const grid = document.getElementById('grid');
+  const list = filter==='All' ? PRODUCTS : PRODUCTS.filter(p=>p.category===filter);
+  if(!list.length){
+    grid.innerHTML=`<div class="no-results">No products in this category yet. Check back soon! 🌸</div>`;
+    return;
+  }
+  grid.innerHTML = list.map((p,i)=>buildCard(p,i*70)).join('');
+  list.forEach(p=>{ carouselState[p.id]=0; });
+}
+
+function filterBy(cat, el){
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+  renderProducts(cat);
+}
+
+/* ── MODALS ───────────────────────────────────────────── */
+function openModal(id){ document.getElementById(id).classList.add('open'); document.body.style.overflow='hidden'; }
+function closeModal(id){ document.getElementById(id).classList.remove('open'); document.body.style.overflow=''; }
+function overlayClick(e,id){ if(e.target.id===id) closeModal(id); }
+
+function openCart(){ renderCart(); openModal('cartOverlay'); }
+
+function openOrder(){
+  closeModal('cartOverlay');
+  buildOrderPreview();
+  document.getElementById('successBox').classList.remove('show');
+  document.getElementById('orderWrap').style.display='';
+  openModal('orderOverlay');
+}
+
+function handleDone(){
+  closeModal('orderOverlay');
+  document.getElementById('successBox').classList.remove('show');
+  document.getElementById('orderWrap').style.display='';
+  document.getElementById('orderForm').reset();
+  document.getElementById('submitBtn').disabled=false;
+  document.getElementById('submitBtn').textContent='✅  Confirm & Send Order';
+}
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){ closeModal('cartOverlay'); closeModal('orderOverlay'); }
+});
+
+/* ── ORDER PREVIEW ────────────────────────────────────── */
+function buildOrderPreview(){
+  let lines='', summaryText='ORDER SUMMARY\n──────────────\n';
+  cart.forEach(it=>{
+    const sub=it.price*it.qty;
+    lines+=`<div class="op-line"><span>${it.name} × ${it.qty}</span><span>₹${sub.toLocaleString('en-IN')}</span></div>`;
+    summaryText+=`${it.name} × ${it.qty} = ₹${sub}\n`;
+  });
+  const gt = grandTotal();
+  summaryText += `\nGRAND TOTAL: ₹${gt}`;
+  document.getElementById('orderPreview').innerHTML=`<div class="op-title">📋 Order Summary</div>${lines}<div class="op-total"><span>Grand Total</span><span>₹${gt.toLocaleString('en-IN')}</span></div>`;
+  document.getElementById('fSummary').value = summaryText;
+  document.getElementById('fTotal').value = '₹' + gt.toLocaleString('en-IN');
+  document.getElementById('fSubject').value = `New Order ₹${gt} – Jaipuriya Kurti Bazaar`;
+}
+
+/* ── FORM SUBMIT ─────────────────────────────────────── */
+document.getElementById('orderForm').addEventListener('submit', async function(e){
+  e.preventDefault();
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true; btn.textContent = '⏳ Sending…';
+  try{
+    const res = await fetch(this.action,{
+      method:'POST', body:new FormData(this), headers:{Accept:'application/json'}
+    });
+    if(res.ok){
+      cart=[]; saveCart();
+      document.getElementById('orderWrap').style.display='none';
+      document.getElementById('successBox').classList.add('show');
+      this.reset();
+    } else {
+      showToast('❌ Error sending. Please WhatsApp us directly.');
+      btn.disabled=false; btn.textContent='✅  Confirm & Send Order';
+    }
+  } catch {
+    showToast('❌ Network error. Please WhatsApp us.');
+    btn.disabled=false; btn.textContent='✅  Confirm & Send Order';
+  }
+});
+
+/* ── TOAST ───────────────────────────────────────────── */
+let _tt;
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg; t.classList.add('show');
+  clearTimeout(_tt); _tt=setTimeout(()=>t.classList.remove('show'),2600);
+}
+
+/* ── TOUCH SWIPE FOR CAROUSEL ────────────────────────── */
+(function initSwipe(){
+  let sx=0;
+  document.addEventListener('touchstart',e=>{
+    const c=e.target.closest('[id^="carousel-"]');
+    if(c) sx=e.touches[0].clientX;
+  },{passive:true});
+  document.addEventListener('touchend',e=>{
+    const c=e.target.closest('[id^="carousel-"]');
+    if(!c) return;
+    const id=parseInt(c.id.replace('carousel-',''));
+    const dx=e.changedTouches[0].clientX - sx;
+    if(Math.abs(dx)>40){ dx<0?nextSlide(id):prevSlide(id); }
+  },{passive:true});
+})();
+
+/* ── INIT ─────────────────────────────────────────────── */
+renderProducts();
+updateBadges();
+</script>
+</body>
+</html>
